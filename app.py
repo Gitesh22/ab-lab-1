@@ -6,7 +6,14 @@ def score_deal(amount: float, risk: int, customer_type: str) -> float:
         multiplier = 1.0
     else:
         multiplier = 0.9
-    penalty = risk / 50.0
+    if risk >= 80:
+        penalty = 3.0
+    elif risk >= 50:
+        penalty = 2.0
+    elif risk >= 20:
+        penalty = 1.0
+    else:
+        penalty = 0.3
     return (base * multiplier) - penalty
 
 def decision(score: float) -> str:
